@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+}
+ul,li{list-style: none;}
+:root{
+  --facebook: #3b5998;
+}
+.button{
+  background-color: yellow;
+  color: var(--facebook);
+  font-weight: 600;
+  border: none;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.button--small{
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+.button--big{
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+}
+
+
+body{
+  background-color: var(--facebook);
+}
+h1{
+  width: 100%;
+  margin: 5rem 0 0;
+  font-family: 'Monoton', cursive;
+  font-size: 5rem;
+  text-align: center;
+  color: yellow;
+}
+.wrap-all{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.play-time{
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: yellow;
+}
+.image-container{
+  width: 400px;
+  height: 400px;
+  margin-top: 1rem;
+  border: 2px solid yellow;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.select-size{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.select-size button{
+  margin: 0 1rem;
+}
+.list{
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  background: url("https://placeimg.com/400/400/any");
+}
+
+.game-text{
+  position: absolute;
+  font-size: 45px;
+  color: #67c23a;
+  text-shadow: 1px 1px rgba(0,0,0,0.5);
+  display: none;
+}
+
+.list0{
+  background-position-x: 0;
+  background-position-y: 0;
+}
+.list1{
+  background-position-x: -100px;
+  background-position-y: 0;
+}
+.list2{
+  background-position-x: -200px;
+  background-position-y: 0;
+}
+.list3{
+  background-position-x: -300px;
+  background-position-y: 0;
+}
+.list4{
+  background-position-x: 0;
+  background-position-y: -100px;
+}
+.list5{
+  background-position-x: -100px;
+  background-position-y: -100px;
+}
+.list6{
+  background-position-x: -200px;
+  background-position-y: -100px;
+}
+.list7{
+  background-position-x: -300px;
+  background-position-y: -100px;
+}
+.list8{
+  background-position-x: 0;
+  background-position-y: -200px;
+}
+.list9{
+  background-position-x: -100px;
+  background-position-y: -200px;
+}
+.list10{
+  background-position-x: -200px;
+  background-position-y: -200px;
+}
+.list11{
+  background-position-x: -300px;
+  background-position-y: -200px;
+}
+.list12{
+  background-position-x: 0;
+  background-position-y: -300px;
+}
+.list13{
+  background-position-x: -100px;
+  background-position-y: -300px;
+}
+.list14{
+  background-position-x: -200px;
+  background-position-y: -300px;
+}
+.list15{
+  background-position-x: -300px;
+  background-position-y: -300px;
+}
