@@ -120,37 +120,70 @@ btnEight.addEventListener('click', () => {
   tiles = createImageTiles(8);
 });
 
-container.addEventListener('dragstart', e => {
-  if(!isPlaying) return;
-  const obj = e.target;
-  dragged.el = obj;
-  dragged.class = obj.className;
-  dragged.index = [...obj.parentNode.children].indexOf(obj);
-})
-container.addEventListener('dragover', e => {
-  e.preventDefault();
-})
-container.addEventListener('drop', e => {
-  if(!isPlaying) return;
-  const obj = e.target;
-
-  if(obj.className !== dragged.class){
-    let originPlace;
-    let isLast = false;
-
-    if(dragged.el.nextSibling){
-      originPlace = dragged.el.nextSibling
-    } else {
-      originPlace = dragged.el.previousSibling
-      isLast = true;
+$('..image-container').draggable({
+  start: function(e){
+    if(!isPlaying) return;
+    const obj = e.target;
+    dragged.el = obj;
+    dragged.class = obj.className;
+    dragged.index = [...obj.parentNode.children].indexOf(obj);
+  },
+  drag: function(e){
+    e.preventDefault();
+  },
+  stop: function(e){
+    if(!isPlaying) return;
+    const obj = e.target;
+  
+    if(obj.className !== dragged.class){
+      let originPlace;
+      let isLast = false;
+  
+      if(dragged.el.nextSibling){
+        originPlace = dragged.el.nextSibling
+      } else {
+        originPlace = dragged.el.previousSibling
+        isLast = true;
+      }
+  
+      const droppedIndex = [...obj.parentNode.children].indexOf(obj);
+      dragged.index > droppedIndex ? obj.before(dragged.el) : obj.after(dragged.el);
+      isLast ? originPlace.after(obj) : originPlace.before(obj);
     }
+    checkStatus();
+  } 
+})
+// container.addEventListener('dragstart', e => {
+//   if(!isPlaying) return;
+//   const obj = e.target;
+//   dragged.el = obj;
+//   dragged.class = obj.className;
+//   dragged.index = [...obj.parentNode.children].indexOf(obj);
+// })
+// container.addEventListener('dragover', e => {
+//   e.preventDefault();
+// })
+// container.addEventListener('drop', e => {
+//   if(!isPlaying) return;
+//   const obj = e.target;
 
-    const droppedIndex = [...obj.parentNode.children].indexOf(obj);
-    dragged.index > droppedIndex ? obj.before(dragged.el) : obj.after(dragged.el);
-    isLast ? originPlace.after(obj) : originPlace.before(obj);
-  }
-  checkStatus();
-});
+//   if(obj.className !== dragged.class){
+//     let originPlace;
+//     let isLast = false;
+
+//     if(dragged.el.nextSibling){
+//       originPlace = dragged.el.nextSibling
+//     } else {
+//       originPlace = dragged.el.previousSibling
+//       isLast = true;
+//     }
+
+//     const droppedIndex = [...obj.parentNode.children].indexOf(obj);
+//     dragged.index > droppedIndex ? obj.before(dragged.el) : obj.after(dragged.el);
+//     isLast ? originPlace.after(obj) : originPlace.before(obj);
+//   }
+//   checkStatus();
+// });
 
 startButton.addEventListener('click', () => {
   setGame();
