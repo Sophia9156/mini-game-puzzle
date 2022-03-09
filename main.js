@@ -1,11 +1,15 @@
 const container = document.querySelector('.image-container');
+const btnFour = document.querySelector('.four');
+const btnEight = document.querySelector('.eight');
 const startButton = document.querySelector('.start-button');
 const gameText = document.querySelector('.game-text');
 const playTime = document.querySelector('.play-time');
+const cheatBtn = document.querySelector('.cheat-button');
 
-const tileCount = 16;
+let tileCount = 16;
 
 let tiles = [];
+let position = [];
 const dragged = {
   el: null,
   class: null,
@@ -18,15 +22,19 @@ let time = 0;
 
 // function
 
-function setGame() {
-  isPlaying = true;
+function resetPlay(playing) {
+  isPlaying = playing;
   time = 0;
   playTime.innerText = time;
   container.innerHTML = '';
   gameText.style.display = 'none';
   clearInterval(timeInterval);
+}
 
-  tiles = createImageTiles();
+function setGame() {
+  resetPlay(true);
+  container.classList.remove('cheat');
+
   tiles.forEach(tile => container.appendChild(tile));
   setTimeout(() => {
     container.innerHTML = '';
@@ -35,7 +43,7 @@ function setGame() {
       playTime.innerText = time;
       time++;
     },1000);
-  }, 3000);
+  }, 5000);
 }
 
 function checkStatus() {
@@ -49,13 +57,32 @@ function checkStatus() {
   }
 }
 
-function createImageTiles() {
+function makePositionArray(tileNum) {
+  for(let y = 0; y < tileNum; y++) {
+    for(let x = 0; x < tileNum; x++) {
+      position.push({
+        x: x * -100,
+        y: y * -100
+      })
+    }
+  }
+}
+
+function createImageTiles(num) {
   const tempArray = [];
+  position = [];
+  makePositionArray(num);
+
   Array(tileCount).fill().forEach((v, i) => {
     const li = document.createElement('li');
     li.setAttribute('data-index', i);
     li.setAttribute('draggable', 'true');
-    li.classList.add(`list list${i}`);
+    li.style.background = `url("https://placeimg.com/${num}00/${num}00/any")`;
+    li.style.backgroundPositionX = `${position[i].x}px`;
+    li.style.backgroundPositionY = `${position[i].y}px`;
+    li.classList.add('list');
+    li.classList.add(`list${i}`);
+    li.textContent = i + 1;
     tempArray.push(li);
   });
   return tempArray;
@@ -73,6 +100,26 @@ function shuffle(array) {
 
 
 // events
+window.onload = () => {
+  tiles = createImageTiles(4);
+}
+btnFour.addEventListener('click', () => {
+  tileCount = 16;
+  resetPlay(false);
+  container.style.width = '400px';
+  container.style.height = '400px';
+  container.style.gridTemplateColumns = `repeat(${4}, 1fr)`;
+  tiles = createImageTiles(4);
+});
+btnEight.addEventListener('click', () => {
+  tileCount = 64;
+  resetPlay(false);
+  container.style.width = '800px';
+  container.style.height = '800px';
+  container.style.gridTemplateColumns = `repeat(${8}, 1fr)`;
+  tiles = createImageTiles(8);
+});
+
 container.addEventListener('dragstart', e => {
   if(!isPlaying) return;
   const obj = e.target;
@@ -107,4 +154,12 @@ container.addEventListener('drop', e => {
 
 startButton.addEventListener('click', () => {
   setGame();
-})
+});
+
+cheatBtn.addEventListener('click', () => {
+  if(container.textContent === '') {
+    return;
+  } else {
+    container.classList.add('cheat');
+  }
+});

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Monoton&display=swap');
 
 *{
   margin: 0;
@@ -7,6 +7,7 @@
 ul,li{list-style: none;}
 :root{
   --facebook: #3b5998;
+  --shadow: 5px 5px 5px rgba(177, 177, 177, 0.5);
 }
 .button{
   background-color: yellow;
@@ -16,6 +17,7 @@ ul,li{list-style: none;}
   border-radius: 1rem;
   margin-top: 2rem;
   cursor: pointer;
+  box-shadow: var(--shadow);
 }
 .button--small{
   padding: 0.5rem 1rem;
@@ -37,12 +39,14 @@ h1{
   font-size: 5rem;
   text-align: center;
   color: yellow;
+  text-shadow: var(--shadow);
 }
 .wrap-all{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 10rem;
 }
 .play-time{
   font-size: 2rem;
@@ -56,6 +60,10 @@ h1{
   border: 2px solid yellow;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  color: rgba(0,0,0,0);
+}
+.image-container.cheat{
+  color: yellow;
 }
 .select-size{
   margin-top: 2rem;
@@ -69,8 +77,6 @@ h1{
 .list{
   width: 100px;
   height: 100px;
-  color: #fff;
-  background: url("https://placeimg.com/400/400/any");
 }
 
 .game-text{
@@ -78,70 +84,6 @@ h1{
   font-size: 45px;
   color: #67c23a;
   text-shadow: 1px 1px rgba(0,0,0,0.5);
+  font-family: 'Carter One', cursive;
   display: none;
-}
-
-.list0{
-  background-position-x: 0;
-  background-position-y: 0;
-}
-.list1{
-  background-position-x: -100px;
-  background-position-y: 0;
-}
-.list2{
-  background-position-x: -200px;
-  background-position-y: 0;
-}
-.list3{
-  background-position-x: -300px;
-  background-position-y: 0;
-}
-.list4{
-  background-position-x: 0;
-  background-position-y: -100px;
-}
-.list5{
-  background-position-x: -100px;
-  background-position-y: -100px;
-}
-.list6{
-  background-position-x: -200px;
-  background-position-y: -100px;
-}
-.list7{
-  background-position-x: -300px;
-  background-position-y: -100px;
-}
-.list8{
-  background-position-x: 0;
-  background-position-y: -200px;
-}
-.list9{
-  background-position-x: -100px;
-  background-position-y: -200px;
-}
-.list10{
-  background-position-x: -200px;
-  background-position-y: -200px;
-}
-.list11{
-  background-position-x: -300px;
-  background-position-y: -200px;
-}
-.list12{
-  background-position-x: 0;
-  background-position-y: -300px;
-}
-.list13{
-  background-position-x: -100px;
-  background-position-y: -300px;
-}
-.list14{
-  background-position-x: -200px;
-  background-position-y: -300px;
-}
-.list15{
-  background-position-x: -300px;
-  background-position-y: -300px;
 }
